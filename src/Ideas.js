@@ -30,20 +30,7 @@ class Ideas extends Component {
                     done: false,
                 }
             ],
-            // todoliked:[
-            //     {
-            //         key: '',
-            //         liked: false
-            //     }
-            // ],
-            // doneliked:[
-            //     {
-            //         key: '',
-            //         liked: false
-            //     }
-            // ]
         };
-        // this.onTabChange = this.onTabChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
     getUserData = () => {
