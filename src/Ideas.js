@@ -19,7 +19,6 @@ class Ideas extends Component {
                     credit: '',
                     vote: 0,
                     done: false,
-                    liked: false
                 }
             ],
             done: [
@@ -29,9 +28,20 @@ class Ideas extends Component {
                     credit: '',
                     vote: 0,
                     done: false,
-                    liked: false
                 }
-            ]
+            ],
+            // todoliked:[
+            //     {
+            //         key: '',
+            //         liked: false
+            //     }
+            // ],
+            // doneliked:[
+            //     {
+            //         key: '',
+            //         liked: false
+            //     }
+            // ]
         };
         // this.onTabChange = this.onTabChange.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -42,7 +52,7 @@ class Ideas extends Component {
             "value",
             snapshot => {
                 let data = snapshot.val();
-                console.log(data);
+                // console.log(data);
 
                 let todos = [];
                 let done = [];
@@ -56,7 +66,6 @@ class Ideas extends Component {
                             vote: data[n].vote,
                             done: data[n].done,
                             date: data[n].date,
-                            liked: false
                         })
                     }
                     else {
@@ -67,31 +76,28 @@ class Ideas extends Component {
                             vote: data[n].vote,
                             done: data[n].done,
                             date: data[n].date,
-                            liked: false
                         })
                     }
-
-                    console.log(todos);
-                    // console.log(done);
                 }
                 this.setState({
                     todo: todos,
                     done: done
                 })
-                // console.log(this.state.todo);
-                // console.log(this.state.done);
             },
             function (error) {
                 console.log("Error: " + error.code);
             }
         );
+
     };
+
+
+
     componentDidMount() {
         this.getUserData();
     }
 
     writeUserData = () => {
-        console.log("add");
         const data = firebase.database().ref('ideas/');
         data.push({
             name: this.state.name,
@@ -102,16 +108,33 @@ class Ideas extends Component {
         });
     };
     like = (e) => {
-        let element = e.target;
-        let thiskey = element.dataset.key;
-        firebase.database().ref('ideas/' + thiskey).once('value').then(function(snapshot) {
-         let currentvote = snapshot.val().vote;
-         currentvote=currentvote+1;
-        let updates = {};
-        updates['ideas/' + thiskey + '/' + 'vote'] = currentvote;
-        return firebase.database().ref().update(updates);
 
-          })
+        let element = e.target;
+        console.log(element.firstChild);
+        let index = element.dataset.index;
+        let list = element.dataset.list;
+        let liked =  (element.dataset.liked==="true");
+        console.log(liked);
+        liked = !liked;
+        console.log(liked);
+        element.dataset.liked=liked;
+
+        let thiskey = element.dataset.key;
+        firebase.database().ref('ideas/' + thiskey).once('value').then(function (snapshot) {
+
+            let currentvote = snapshot.val().vote;
+            if (liked){currentvote = currentvote + 1;
+                element.firstChild.style.display = "none";
+                element.children[1].style.display = "inline-block";
+            }
+            else { currentvote = currentvote - 1;
+                element.firstChild.style.display = "inline-block";
+                element.children[1].style.display = "none";}
+            
+            let updates = {};
+            updates['ideas/' + thiskey + '/' + 'vote'] = currentvote;
+            return firebase.database().ref().update(updates);
+        })
     };
 
     handleChange(evt) {
@@ -119,7 +142,6 @@ class Ideas extends Component {
         this.setState({
             [evt.target.name]: value
         });
-        // console.log(this.state.name);
     }
     onTabChange(e) {
         const { activeTabIndex } = this.state;
@@ -138,8 +160,9 @@ class Ideas extends Component {
                     <td>{index + 1}</td>
                     <td>{name}</td>
                     <td>{credit}</td>
-                    <td><div data-like="false" data-key={key} className="votebttn" onClick={((e) => this.like(e))}>
+                    <td><div data-index={index} data-key={key} data-liked="false" data-list="todo" className="votebttn" onClick={((e) => this.like(e))}>
                         <Like className="Likebutton" />
+                        <Liked className="Likebutton liked" />
                         {vote}
                     </div></td>
                 </tr>
@@ -154,8 +177,9 @@ class Ideas extends Component {
                     <td>{date}</td>
                     <td>{name}</td>
                     <td>{credit}</td>
-                    <td><div data-like="false" data-key={key} className="votebttn" onClick={((e) => this.like(e))}>
+                    <td><div data-like="false" data-key={key} data-list="done" className="votebttn" onClick={((e) => this.like(e))}>
                         <Like className="Likebutton" />
+                        <Liked className="Likebutton liked" />
                         {vote}
                     </div></td>
                 </tr>
@@ -163,9 +187,6 @@ class Ideas extends Component {
         });
     }
     render() {
-        // const { activeTabIndex } = this.state;
-        // const tabs = ['Current Quarter', 'Next Quarter', 'Further Out', 'All'];
-
         return (
             <div className="Ideas">
                 <div className="Rules">
