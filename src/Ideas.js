@@ -82,6 +82,7 @@ class Ideas extends Component {
 
     componentDidMount() {
         this.getUserData();
+        // console.log(this.props.size);
     }
 
     writeUserData = () => {
@@ -100,24 +101,27 @@ class Ideas extends Component {
         console.log(element.firstChild);
         let index = element.dataset.index;
         let list = element.dataset.list;
-        let liked =  (element.dataset.liked==="true");
+        let liked = (element.dataset.liked === "true");
         console.log(liked);
         liked = !liked;
         console.log(liked);
-        element.dataset.liked=liked;
+        element.dataset.liked = liked;
 
         let thiskey = element.dataset.key;
         firebase.database().ref('ideas/' + thiskey).once('value').then(function (snapshot) {
 
             let currentvote = snapshot.val().vote;
-            if (liked){currentvote = currentvote + 1;
+            if (liked) {
+                currentvote = currentvote + 1;
                 element.firstChild.style.display = "none";
                 element.children[1].style.display = "inline-block";
             }
-            else { currentvote = currentvote - 1;
+            else {
+                currentvote = currentvote - 1;
                 element.firstChild.style.display = "inline-block";
-                element.children[1].style.display = "none";}
-            
+                element.children[1].style.display = "none";
+            }
+
             let updates = {};
             updates['ideas/' + thiskey + '/' + 'vote'] = currentvote;
             return firebase.database().ref().update(updates);
@@ -144,7 +148,12 @@ class Ideas extends Component {
             const { key, name, credit, vote } = student; //destructuring
             return (
                 <tr key={index}>
-                    <td>{index + 1}</td>
+                    {
+                        this.props.size !== "S"
+                            ? <td>{index + 1}</td>
+                            : null
+                    }
+
                     <td>{name}</td>
                     <td>{credit}</td>
                     <td><div data-index={index} data-key={key} data-liked="false" data-list="todo" className="votebttn" onClick={((e) => this.like(e))}>
@@ -161,9 +170,14 @@ class Ideas extends Component {
             const { key, name, credit, vote, date } = student; //destructuring
             return (
                 <tr key={index}>
-                    <td>{date}</td>
+                    {
+                        this.props.size !== "S"
+                            ? <td>{date}</td>
+                            : null
+                    }
+
                     <td>{name}</td>
-                    <td>{credit}</td>
+                    <td className="">{credit}</td>
                     <td><div data-like="false" data-key={key} data-list="done" className="votebttn" onClick={((e) => this.like(e))}>
                         <Like className="Likebutton" />
                         <Liked className="Likebutton liked" />
@@ -203,10 +217,15 @@ class Ideas extends Component {
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <th>No.</th>
-                                            <th>Name</th>
-                                            <th>Credit to</th>
-                                            <th>Vote</th>
+                                            {
+                                                this.props.size !== "S"
+                                                    ? <th className="row-index">No.</th>
+                                                    : null
+                                            }
+
+                                            <th className="row-name">Name</th>
+                                            <th className="row-credit">By</th>
+                                            <th className="row-vote">Vote</th>
                                         </tr>
                                         {this.renderTodoTable()}
                                     </tbody>
@@ -218,10 +237,15 @@ class Ideas extends Component {
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <th>Birthday</th>
-                                            <th>Name</th>
-                                            <th>Credit to</th>
-                                            <th>Votes</th>
+                                            {
+                                                this.props.size !== "S"
+                                                    ? <th className="row-date">Date</th>
+                                                    : null
+                                            }
+
+                                            <th className="row-name">Name</th>
+                                            <th className="row-credit">By</th>
+                                            <th className="row-vote">Votes</th>
                                         </tr>
                                         {this.renderDoneTable()}
                                     </tbody>

@@ -72,13 +72,43 @@ ul {
   height: 2em;
   /* width: 50em; */
 }
-
+.AddBttn{
+  background: black;
+  color: white;
+  /* height: 36px; */
+}
+.AddBttn:hover{
+opacity: 0.7;  
+}
 /* --------------------table section--------------------*/
 
 .Tables {
   margin-top: 32px;
+ 
 }
-
+table{
+  table-layout: fixed;
+  /* font-size: 0.8em; */
+}
+.row-index{
+  width: 30px;
+}
+.row-name{
+  width: 50%;
+}
+.row-credit{
+  width: 30%;
+}
+.row-vote{
+  width: 50px;
+  /* text-align: right; */
+}
+.row-date{
+  width: 60px;
+}
+td{
+  overflow-wrap: break-word;
+}
 .tabs {
   margin: 0 auto;
   width: 70%;
@@ -101,7 +131,7 @@ button {
   background: transparent;
   border: none;
   outline: none;
-  padding: 10px 20px;
+  padding: 6px 20px;
   cursor: pointer;
   color: rgba(0, 0, 0, .4);
   transition: all ease-in-out .2s;
@@ -238,13 +268,22 @@ model-viewer:focus {
 
 /* small */
 
-/* @media only screen and (max-width: 640px) {
-
-} */
-
-/* median */
-
-@media only screen and (max-width: 1007px) {
+@media only screen and (max-width: 640px) {
+  body{
+    font-size:0.8em;
+  }
+  .half-box-style{
+    margin: 16px;
+  }
+  h1 {
+    font-size: 2.5em;
+    margin: 20px 0px;
+  }
+  
+  h2 {
+    margin-top: 16px;
+    font-size: 1.2em;
+  }
   .wide-left {
     /* background-color: #ff9e2c; */
     width: 100%;
@@ -256,8 +295,73 @@ model-viewer:focus {
   /* .half-box-style {
     margin: 0;
   } */
+  model-viewer {
+    width: 95%;
+    margin:auto;
+    height: 250px;
+  }
+  .hs {
+
+    grid-template-columns: 10px repeat(6, 100px) 10px;
+    grid-template-rows: minmax(100px, 1fr);
+    overflow-x: scroll;
+
+  }
+  .InputBoxes{
+display: block;
+  }
+  .InputBox{
+    width:90%;
+    display: block;
+    margin-bottom:8px; 
+  }
+}
+
+/* median */
+
+@media only screen and (min-width: 640px) and (max-width: 1007px) {
+  h1 {
+    font-size: 3em;
+    margin: 20px 0px;
+  }
+  
+  h2 {
+    margin-top: 16px;
+    font-size: 1.2em;
+  }
+  
+  .wide-left {
+    /* background-color: #ff9e2c; */
+    width: 100%;
+  }
+  .model {
+    background: #eeeeee;
+    margin: 20px;
+  }
+  /* .half-box-style {
+    margin: 0;
+  } */
+  model-viewer {
+    width: 80%;
+    margin:auto;
+    height: 400px;
+  }
+  .hs {
+
+    grid-template-columns: 10px repeat(6, 150px) 10px;
+    grid-template-rows: minmax(150px, 1fr);
+    overflow-x: scroll;
+
+  }
+  
 }
 
 /* x-large */
 
-@media only screen and (min-width: 1440px) {}
+@media only screen and (min-width: 2560px) {
+  .half-box-style {
+    margin: auto;
+    max-width: 800px;
+    position: relative;
+  }
+}

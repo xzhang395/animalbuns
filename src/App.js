@@ -56,15 +56,15 @@ class App extends Component {
             <Intro />
             {/* {this.state.windowSize=="S"|this.state.windowSize=="M" && <Gallery />} */}
             {
-              this.state.windowSize=="S"|this.state.windowSize=="M"
+              this.state.windowSize==="S"|this.state.windowSize==="M"
               ? <Gallery />
               : null
             }
-            <Ideas />
+            <Ideas size={this.state.windowSize}/>
           </div>
         </div>
                     {
-              this.state.windowSize=="L"|this.state.windowSize=="XL"
+              this.state.windowSize==="L"|this.state.windowSize==="XL"
               ? <div className="wide-right" ><div className="half-box-style" ><Gallery /></div></div>
               : null
             }

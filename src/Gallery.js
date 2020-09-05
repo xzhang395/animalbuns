@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import turtilla from "./img/turtilla.png";
 import strawbeary from "./img/strawbeary.png";
+import filler from "./img/filler.png";
+import instantPoodle from "./img/instantPoodle.png";
+
 
 
 const photo = [
@@ -58,13 +61,14 @@ class Gallery extends Component {
             <div className="Gallery">
                 <h2>Last week’s newborn:</h2>
                 <div>
-                    <model-viewer className="model" src={this.state.modeldata.src} ios-src={this.state.modeldata.iosSrc} alt={this.state.modeldata.alt} background-color="#cc9a6c" camera-controls > </model-viewer>
+                    <model-viewer className="model" src={this.state.modeldata.src} interaction-policy="allow-when-focused" ios-src={this.state.modeldata.iosSrc} alt={this.state.modeldata.alt} background-color="#cc9a6c" camera-controls > </model-viewer>
                 </div>
                 <div className="app">
                     <ul className="hs full">
-                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={turtilla} /></li>
+                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={instantPoodle} /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={turtilla} /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={strawbeary} /></li>
+                        <li className="item" ><img src={filler} /></li>
                     </ul>
                 </div>
             </div>
