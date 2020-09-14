@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import turtilla from "./img/turtilla.png";
 import strawbeary from "./img/strawbeary.png";
-import filler from "./img/filler.png";
 import instantPoodle from "./img/instantPoodle.png";
 import chocolateMoose from "./img/chocolateMoose.png";
-import { chocolate } from "color-name";
 
 
 

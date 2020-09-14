@@ -66,6 +66,11 @@ class Ideas extends Component {
                         })
                     }
                 }
+                // console.log(todos);
+                done.sort(compareDate);
+                
+                todos.sort(compareEntry);    
+                // console.log(todos); 
                 this.setState({
                     todo: todos,
                     done: done
@@ -98,13 +103,13 @@ class Ideas extends Component {
     like = (e) => {
 
         let element = e.target;
-        console.log(element.firstChild);
+        // console.log(element.firstChild);
         let index = element.dataset.index;
         let list = element.dataset.list;
         let liked = (element.dataset.liked === "true");
-        console.log(liked);
+        // console.log(liked);
         liked = !liked;
-        console.log(liked);
+        // console.log(liked);
         element.dataset.liked = liked;
 
         let thiskey = element.dataset.key;
@@ -267,5 +272,16 @@ const Tab = props => {
         </React.Fragment>
     )
 }
-
+//compose data key
+function compareEntry(a, b) {
+      if (Number(a.vote) > Number(b.vote)) return -1;
+      if (Number(b.vote) > Number(a.vote)) return 1;
+      return 0;
+  }
+  function compareDate(a, b) {
+    //   console.log(Date(a.date));
+    if (Date(a.date) > Date(b.date)) return -1;
+    if (Date(b.date) > Date(a.date)) return 1;
+    return 0;
+}
 export default Ideas;
