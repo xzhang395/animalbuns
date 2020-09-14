@@ -33,7 +33,18 @@ ul {
 }
 
 /* --------------------side by side layout container--------------------*/
-
+.sicon{
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.scontainer{
+display: flex;
+}
+.sblock{
+margin-right: 16px;
+}
 .wide-left {
   /* background-color: #ff9e2c; */
   position: absolute;

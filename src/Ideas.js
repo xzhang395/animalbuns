@@ -194,13 +194,13 @@ class Ideas extends Component {
                     <h2>Rules:</h2>
                     <ul>
                         <li>I’ll make 1 thing / week </li>
-                        <li>Add ideas below and get credits for it</li>
+                        <li>Add your ideas below</li>
                         <li>Heart the ideas you love and I’ll make them first!</li>
                     </ul>
                 </div>
                 <div className="WIP">
                     <h2>This week WIP:</h2>
-                    <span className="highlights">Strawbeary</span>
+                    <span className="highlights">Mice Cracker</span>
                 </div>
                 <div className="Inputs">
                     <h2>Your pun:</h2>

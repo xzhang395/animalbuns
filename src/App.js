@@ -5,11 +5,6 @@ import Intro from "./Intro.js";
 import Gallery from "./Gallery.js";
 import Ideas from "./Ideas.js";
 
-const breakpoints = {
-  s: 640,
-  m: 1007,
-  l:1400
-}
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +18,7 @@ class App extends Component {
 
   handleResize = (e) => {
     this.setState({ windowWidth: window.innerWidth });
-    console.log(this.state.windowWidth);
+    // console.log(this.state.windowWidth);
     this.checkwindowsize();
   };
   componentDidMount() {
@@ -41,7 +36,7 @@ class App extends Component {
     }else{
       this.setState({ windowSize: "XL" });
     }
-    console.log(this.state.windowSize);
+    // console.log(this.state.windowSize);
   }
 
 

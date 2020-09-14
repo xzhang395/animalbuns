@@ -3,6 +3,8 @@ import turtilla from "./img/turtilla.png";
 import strawbeary from "./img/strawbeary.png";
 import filler from "./img/filler.png";
 import instantPoodle from "./img/instantPoodle.png";
+import chocolateMoose from "./img/chocolateMoose.png";
+import { chocolate } from "color-name";
 
 
 
@@ -13,9 +15,13 @@ const photo = [
 ]
 
 const modeldata = [{
-    src: "https://poly.googleusercontent.com/downloads/c/fp/1590573994105947/9uVeFS5mdmX/3010kGa1FBz/new_truck.gltf",
-    iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1590573994105947/9uVeFS5mdmX/dYGqokin9yl/new_truck.usdz",
-    alt: "1",
+    src: "https://poly.googleusercontent.com/downloads/c/fp/1600036850320369/bQEOzFZZNJL/1SyntCG7cuQ/v1.gltf",
+    iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1600036850320369/bQEOzFZZNJL/28K_P4BboXT/v1.usdz",
+    alt: "Chocolate Moose by Nika Zhang",
+},{
+    src: "https://poly.googleusercontent.com/downloads/c/fp/1600040391985930/6EqeXINAJpe/7OrTFcGVzNM/model.gltf",
+    iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1600040391985930/6EqeXINAJpe/0GC9wHoPklZ/model.usdz",
+    alt: "InstantPoodle by Nika Zhang",
 },
 {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1598844981775095/bunhq9A_kKB/bZcoPX4Qrbz/Turtilla.gltf",
@@ -45,8 +51,8 @@ class Gallery extends Component {
     handleClick = (e) => {
         let parent = e.target.parentNode.parentNode;
         let MIndex = Array.prototype.indexOf.call(parent.children, e.target.parentNode);
-        console.log(e.target.parentNode.parentNode);
-        console.log(MIndex);
+        // console.log(e.target.parentNode.parentNode);
+        // console.log(MIndex);
         this.setState({
             modeldata: {
                 src: modeldata[MIndex].src,
@@ -65,10 +71,11 @@ class Gallery extends Component {
                 </div>
                 <div className="app">
                     <ul className="hs full">
+                     <li className="item" onClick={((e) => this.handleClick(e))}><img src={chocolateMoose} /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={instantPoodle} /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={turtilla} /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={strawbeary} /></li>
-                        <li className="item" ><img src={filler} /></li>
+                        {/* <li className="item" ><img src={filler} /></li> */}
                     </ul>
                 </div>
             </div>
