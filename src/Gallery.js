@@ -3,6 +3,7 @@ import turtilla from "./img/turtilla.png";
 import strawbeary from "./img/strawbeary.png";
 import instantPoodle from "./img/instantPoodle.png";
 import chocolateMoose from "./img/chocolateMoose.png";
+import toadfu from "./img/toadfu.png";
 
 
 
@@ -13,23 +14,32 @@ const photo = [
 ]
 
 const modeldata = [{
+    src: "https://poly.googleusercontent.com/downloads/c/fp/1600496019723460/bY627s0ODr2/5BVJkO2HJgs/ffds.gltf",
+    iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1600496019723460/bY627s0ODr2/9Eg8yKLc4za/ffds.usdz",
+    alt: "Toadfu by Nika Zhang",
+    name: "Toad-fu"
+},{
     src: "https://poly.googleusercontent.com/downloads/c/fp/1600036850320369/bQEOzFZZNJL/1SyntCG7cuQ/v1.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1600036850320369/bQEOzFZZNJL/28K_P4BboXT/v1.usdz",
     alt: "Chocolate Moose by Nika Zhang",
-},{
+    name: "Chocolate Moose"
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1600040391985930/6EqeXINAJpe/7OrTFcGVzNM/model.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1600040391985930/6EqeXINAJpe/0GC9wHoPklZ/model.usdz",
-    alt: "InstantPoodle by Nika Zhang",
+    alt: "Instant Poodle by Nika Zhang",
+    name: "Instant Poodle" 
 },
 {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1598844981775095/bunhq9A_kKB/bZcoPX4Qrbz/Turtilla.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1598844981775095/bunhq9A_kKB/b62zj0IX497/Turtilla.usdz",
     alt: "Tur-tilla by Nika Zhang",
+    name: "Tur-tilla" 
 },
 {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1598833715801076/dRy_c-J8F5d/4FEDsdN6uEH/strabeary.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1598833715801076/dRy_c-J8F5d/5WfOfwOY5LH/strabeary.usdz",
     alt: "Straw-beary by Nika Zhang",
+    name: "Straw-beary" 
 },
 ]
 
@@ -42,34 +52,35 @@ class Gallery extends Component {
                 src: modeldata[0].src,
                 iosSrc: modeldata[0].iosSrc,
                 alt: modeldata[0].alt,
-            }
+            },
+            selected: modeldata[0].name,
         };
     }
 
     handleClick = (e) => {
         let parent = e.target.parentNode.parentNode;
         let MIndex = Array.prototype.indexOf.call(parent.children, e.target.parentNode);
-        // console.log(e.target.parentNode.parentNode);
-        // console.log(MIndex);
         this.setState({
             modeldata: {
                 src: modeldata[MIndex].src,
                 iosSrc: modeldata[MIndex].iosSrc,
                 alt: modeldata[MIndex].alt,
-            }
+            },
+            selected: modeldata[MIndex].name
         })
     }
 
     render() {
         return (
             <div className="Gallery">
-                <h2>Last week’s newborn:</h2>
+                <h2>{this.state.selected}</h2>
                 <div>
                     <model-viewer className="model" src={this.state.modeldata.src} interaction-policy="allow-when-focused" ios-src={this.state.modeldata.iosSrc} alt={this.state.modeldata.alt} background-color="#cc9a6c" camera-controls > </model-viewer>
                 </div>
                 <div className="app">
                     <ul className="hs full">
-                     <li className="item" onClick={((e) => this.handleClick(e))}><img src={chocolateMoose} /></li>
+                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={toadfu} /></li>
+                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={chocolateMoose} /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={instantPoodle} /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={turtilla} /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={strawbeary} /></li>

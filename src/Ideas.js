@@ -68,8 +68,8 @@ class Ideas extends Component {
                 }
                 // console.log(todos);
                 done.sort(compareDate);
-                
-                todos.sort(compareEntry);    
+
+                todos.sort(compareEntry);
                 // console.log(todos); 
                 this.setState({
                     todo: todos,
@@ -199,13 +199,13 @@ class Ideas extends Component {
                     <h2>Rules:</h2>
                     <ul>
                         <li>I’ll make 1 thing / week </li>
-                        <li>Add your ideas below</li>
+                        <li>Add your animal/food puns below</li>
                         <li>Heart the ideas you love and I’ll make them first!</li>
                     </ul>
                 </div>
                 <div className="WIP">
                     <h2>This week WIP:</h2>
-                    <span className="highlights">Mice Cracker</span>
+                    <span className="highlights">Beagel</span>
                 </div>
                 <div className="Inputs">
                     <h2>Your pun:</h2>
@@ -274,11 +274,11 @@ const Tab = props => {
 }
 //compose data key
 function compareEntry(a, b) {
-      if (Number(a.vote) > Number(b.vote)) return -1;
-      if (Number(b.vote) > Number(a.vote)) return 1;
-      return 0;
-  }
-  function compareDate(a, b) {
+    if (Number(a.vote) > Number(b.vote)) return -1;
+    if (Number(b.vote) > Number(a.vote)) return 1;
+    return 0;
+}
+function compareDate(a, b) {
     //   console.log(Date(a.date));
     if (Date(a.date) > Date(b.date)) return -1;
     if (Date(b.date) > Date(a.date)) return 1;
