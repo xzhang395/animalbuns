@@ -30,6 +30,7 @@ class Ideas extends Component {
                     done: false,
                 }
             ],
+            likes: [],
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -103,14 +104,20 @@ class Ideas extends Component {
     like = (e) => {
 
         let element = e.target;
-        // console.log(element.firstChild);
-        let index = element.dataset.index;
-        let list = element.dataset.list;
-        let liked = (element.dataset.liked === "true");
+        let name = element.dataset.name;
+        let currentlikes = this.state.likes;
+        let liked = currentlikes.includes(name);
+        // console.log(name);
         // console.log(liked);
+        if (!liked) {
+            currentlikes.push(name);
+        } else {
+            currentlikes.splice(currentlikes.indexOf(name), 1); // will return ['B'] and t is now equal to ['A', 'C', 'B']
+        }
+        this.setState({
+            likes: currentlikes
+        });
         liked = !liked;
-        // console.log(liked);
-        element.dataset.liked = liked;
 
         let thiskey = element.dataset.key;
         firebase.database().ref('ideas/' + thiskey).once('value').then(function (snapshot) {
@@ -118,13 +125,9 @@ class Ideas extends Component {
             let currentvote = snapshot.val().vote;
             if (liked) {
                 currentvote = currentvote + 1;
-                element.firstChild.style.display = "none";
-                element.children[1].style.display = "inline-block";
             }
             else {
                 currentvote = currentvote - 1;
-                element.firstChild.style.display = "inline-block";
-                element.children[1].style.display = "none";
             }
 
             let updates = {};
@@ -161,9 +164,12 @@ class Ideas extends Component {
 
                     <td>{name}</td>
                     <td>{credit}</td>
-                    <td><div data-index={index} data-key={key} data-liked="false" data-list="todo" className="votebttn" onClick={((e) => this.like(e))}>
-                        <Like className="Likebutton" />
-                        <Liked className="Likebutton liked" />
+                    <td><div data-name={name} data-index={index} data-key={key} data-liked="false" data-list="todo" className="votebttn" onClick={((e) => this.like(e))}>
+                    {
+                        this.state.likes.includes(name)
+                            ? <Liked className="Likebutton liked" />
+                            : <Like className="Likebutton" />
+                    }
                         {vote}
                     </div></td>
                 </tr>
@@ -183,9 +189,11 @@ class Ideas extends Component {
 
                     <td>{name}</td>
                     <td className="">{credit}</td>
-                    <td><div data-like="false" data-key={key} data-list="done" className="votebttn" onClick={((e) => this.like(e))}>
-                        <Like className="Likebutton" />
-                        <Liked className="Likebutton liked" />
+                    <td><div data-name={name} data-like="false" data-key={key} data-list="done" className="votebttn" onClick={((e) => this.like(e))}>
+                    {
+                        this.state.likes.includes(name)
+                            ? <Liked className="Likebutton liked" />
+                            : <Like className="Likebutton" />                    }
                         {vote}
                     </div></td>
                 </tr>
@@ -198,7 +206,7 @@ class Ideas extends Component {
                 <div className="Rules">
                     <h2>Rules:</h2>
                     <ul>
-                        <li>I’ll make 1 thing / week </li>
+                        <li>New post every Sunday</li>
                         <li>Add your animal/food puns below</li>
                         <li>Heart the ideas you love and I’ll make them first!</li>
                     </ul>
@@ -227,7 +235,6 @@ class Ideas extends Component {
                                                     ? <th className="row-index">No.</th>
                                                     : null
                                             }
-
                                             <th className="row-name">Name</th>
                                             <th className="row-credit">By</th>
                                             <th className="row-vote">Vote</th>
@@ -279,9 +286,10 @@ function compareEntry(a, b) {
     return 0;
 }
 function compareDate(a, b) {
-    //   console.log(Date(a.date));
-    if (Date(a.date) > Date(b.date)) return -1;
-    if (Date(b.date) > Date(a.date)) return 1;
+    let adate = new Date(a.date);
+    let bdate = new Date(b.date);
+    if (adate > bdate) return -1;
+    if (bdate > adate) return 1;
     return 0;
 }
 export default Ideas;
