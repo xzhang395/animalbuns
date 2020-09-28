@@ -213,7 +213,7 @@ class Ideas extends Component {
                 </div>
                 <div className="WIP">
                     <h2>This week WIP:</h2>
-                    <span className="highlights">Beagel</span>
+                    <span className="highlights">Potato chimps</span>
                 </div>
                 <div className="Inputs">
                     <h2>Your pun:</h2>
