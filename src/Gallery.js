@@ -5,17 +5,23 @@ import instantPoodle from "./img/instantPoodle.png";
 import chocolateMoose from "./img/chocolateMoose.png";
 import toadfu from "./img/toadfu.png";
 import beagel from "./img/beagel.png";
+import PotatoChimps from "./img/PotatoChimps.png";
 
 const modeldata = [{
+    src: "https://poly.googleusercontent.com/downloads/c/fp/1601872434785501/dUfzjXM1YHR/5mTGFZ_Y9cB/model.gltf",
+    iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1601872434785501/dUfzjXM1YHR/7FVxkD35X68/model.usdz",
+    alt: "Potato Chimps by Nika Zhang",
+    name: "Potato Chimps"
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1601254101313148/5XbZ0QxOJZI/28Bpt_IXXCn/model.gltf",
     alt: "Beagel by Nika Zhang",
     name: "Beagel"
-},{
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1600496019723460/bY627s0ODr2/5BVJkO2HJgs/ffds.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1600496019723460/bY627s0ODr2/9Eg8yKLc4za/ffds.usdz",
     alt: "Toadfu by Nika Zhang",
     name: "Toad-fu"
-},{
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1600036850320369/bQEOzFZZNJL/1SyntCG7cuQ/v1.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1600036850320369/bQEOzFZZNJL/28K_P4BboXT/v1.usdz",
     alt: "Chocolate Moose by Nika Zhang",
@@ -24,19 +30,19 @@ const modeldata = [{
     src: "https://poly.googleusercontent.com/downloads/c/fp/1600040391985930/6EqeXINAJpe/7OrTFcGVzNM/model.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1600040391985930/6EqeXINAJpe/0GC9wHoPklZ/model.usdz",
     alt: "Instant Poodle by Nika Zhang",
-    name: "Instant Poodle" 
+    name: "Instant Poodle"
 },
 {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1598844981775095/bunhq9A_kKB/bZcoPX4Qrbz/Turtilla.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1598844981775095/bunhq9A_kKB/b62zj0IX497/Turtilla.usdz",
     alt: "Tur-tilla by Nika Zhang",
-    name: "Tur-tilla" 
+    name: "Tur-tilla"
 },
 {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1598833715801076/dRy_c-J8F5d/4FEDsdN6uEH/strabeary.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1598833715801076/dRy_c-J8F5d/5WfOfwOY5LH/strabeary.usdz",
     alt: "Straw-beary by Nika Zhang",
-    name: "Straw-beary" 
+    name: "Straw-beary"
 },
 ]
 
@@ -76,13 +82,13 @@ class Gallery extends Component {
                 </div>
                 <div className="app">
                     <ul className="hs full">
+                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={PotatoChimps} alt="Potato Chimps" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={beagel} alt="Beagel" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={toadfu} alt="toad-fu" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={chocolateMoose} alt="Chocolate Moose" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={instantPoodle} alt="Instant Poodle" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={turtilla} alt="Tur-tilla" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={strawbeary} alt="Straw-beary" /></li>
-                        {/* <li className="item" ><img src={filler} /></li> */}
                     </ul>
                 </div>
             </div>
