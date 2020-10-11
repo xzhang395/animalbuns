@@ -247,7 +247,7 @@ model-viewer:focus {
 .hs {
   display: grid;
   grid-gap: calc(var(--gutter) / 2);
-  grid-template-columns: 10px repeat(7, 200px) 10px;
+  grid-template-columns: 10px repeat(8, 200px) 10px;
   grid-template-rows: minmax(200px, 1fr);
   overflow-x: scroll;
   scroll-snap-type: x proximity;
