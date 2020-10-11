@@ -323,7 +323,7 @@ model-viewer:focus {
   }
   .hs {
 
-    grid-template-columns: 10px repeat(6, 100px) 10px;
+    grid-template-columns: 10px repeat(8, 100px) 10px;
     grid-template-rows: minmax(100px, 1fr);
     overflow-x: scroll;
 
@@ -369,7 +369,7 @@ display: block;
   }
   .hs {
 
-    grid-template-columns: 10px repeat(6, 150px) 10px;
+    grid-template-columns: 10px repeat(8, 150px) 10px;
     grid-template-rows: minmax(150px, 1fr);
     overflow-x: scroll;
 
