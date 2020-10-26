@@ -247,7 +247,7 @@ model-viewer:focus {
 .hs {
   display: grid;
   grid-gap: calc(var(--gutter) / 2);
-  grid-template-columns: 10px repeat(9, 200px) 10px;
+  grid-template-columns: 10px repeat(10, 200px) 10px;
   grid-template-rows: minmax(200px, 1fr);
   overflow-x: scroll;
   scroll-snap-type: x proximity;
@@ -323,7 +323,7 @@ model-viewer:focus {
   }
   .hs {
 
-    grid-template-columns: 10px repeat(9, 100px) 10px;
+    grid-template-columns: 10px repeat(10, 100px) 10px;
     grid-template-rows: minmax(100px, 1fr);
     overflow-x: scroll;
 
@@ -369,7 +369,7 @@ display: block;
   }
   .hs {
 
-    grid-template-columns: 10px repeat(9, 150px) 10px;
+    grid-template-columns: 10px repeat(10, 150px) 10px;
     grid-template-rows: minmax(150px, 1fr);
     overflow-x: scroll;
 
