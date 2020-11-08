@@ -10,26 +10,32 @@ import Pawpsicle from "./img/Pawpsicle.png";
 import Susheep from "./img/susheep.png";
 import Piethon from "./img/piethon.png";
 import Camelapple from "./img/camelapple.png";
+import Butterfly from "./img/butterfly.png";
 
 const modeldata = [{
+    src: "https://poly.googleusercontent.com/downloads/c/fp/1604872389088504/59wVZJLz8l9/eaO3aQFlkIt/model.gltf",
+    iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1604872389088504/59wVZJLz8l9/aregHxa4rg8/model.usdz",
+    alt: "Butter-fly by Nika Zhang",
+    name: "Butter-fly"
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1604041551510483/bPc4gs7UyZV/ez30L0gf32x/model.gltf",
     alt: "Ca(ra)mel Apple by Nika Zhang",
     name: "Ca(ra)mel Apple"
-},{
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1603691611062066/7sr6e4p0Rub/eZ2A3KmGYmM/model.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1603691611062066/7sr6e4p0Rub/210zKM3sXp7/model.usdz",
     alt: "Pie-thon by Nika Zhang",
     name: "Pie-thon"
-},{
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1603085388966524/3mhagMGj6iO/bFIaPPECVpY/model.gltf",
     alt: "Su-sheep by Nika Zhang",
     name: "Su-sheep"
-},{
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1602392768424064/4L1gZu8Z02g/4tIo2SjUBao/model.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1602392768424064/4L1gZu8Z02g/bkF1YJOXubq/model.usdz",
     alt: "Paw-psicle by Nika Zhang",
     name: "Paw-psicle"
-},{
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1601872434785501/dUfzjXM1YHR/5mTGFZ_Y9cB/model.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1601872434785501/dUfzjXM1YHR/7FVxkD35X68/model.usdz",
     alt: "Potato Chimps by Nika Zhang",
@@ -104,9 +110,10 @@ class Gallery extends Component {
                 </div>
                 <div className="app">
                     <ul className="hs full">
-                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={Camelapple} alt="Ca(ra)mel Apple)" /></li>  
-                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={Piethon} alt="Pie-thon" /></li>   
-                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={Susheep} alt="Su-sheep" /></li>   
+                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={Butterfly} alt="Butter-fly" /></li>
+                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={Camelapple} alt="Ca(ra)mel Apple)" /></li>
+                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={Piethon} alt="Pie-thon" /></li>
+                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={Susheep} alt="Su-sheep" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={Pawpsicle} alt="Paw-psicle" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={PotatoChimps} alt="Potato Chimps" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={beagel} alt="Beagel" /></li>
