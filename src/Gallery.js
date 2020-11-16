@@ -11,8 +11,14 @@ import Susheep from "./img/susheep.png";
 import Piethon from "./img/piethon.png";
 import Camelapple from "./img/camelapple.png";
 import Butterfly from "./img/butterfly.png";
+import Miceballs from "./img/miceballs.png";
 
 const modeldata = [{
+    src: "https://poly.googleusercontent.com/downloads/c/fp/1605502572745904/5I8xhxI5IKs/5Vl1QrA0cYW/model.gltf",
+    iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1605502572745904/5I8xhxI5IKs/eXwUxc2kvpH/model.usdz",
+    alt: "Mice balls by Nika Zhang",
+    name: "Mice Balls"
+}, {
     src: "https://poly.googleusercontent.com/downloads/c/fp/1604872389088504/59wVZJLz8l9/eaO3aQFlkIt/model.gltf",
     iosSrc: "https://poly.googleusercontent.com/downloads/c/fp/1604872389088504/59wVZJLz8l9/aregHxa4rg8/model.usdz",
     alt: "Butter-fly by Nika Zhang",
@@ -110,6 +116,7 @@ class Gallery extends Component {
                 </div>
                 <div className="app">
                     <ul className="hs full">
+                        <li className="item" onClick={((e) => this.handleClick(e))}><img src={Miceballs} alt="Mice balls" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={Butterfly} alt="Butter-fly" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={Camelapple} alt="Ca(ra)mel Apple)" /></li>
                         <li className="item" onClick={((e) => this.handleClick(e))}><img src={Piethon} alt="Pie-thon" /></li>
